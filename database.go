@@ -52,7 +52,7 @@ func GetAll() {
 	}
 }
 
-func deletAll() {
+func deleteAll() {
 	query := `DELETE FROM infos`
 	_, err := db.Exec(query)
 	if err != nil {

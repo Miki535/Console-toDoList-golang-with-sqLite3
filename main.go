@@ -67,7 +67,7 @@ func main() {
 			}
 
 		case 5:
-			deletAll()
+			deleteAll()
 		case 6:
 			fmt.Println("Bye!")
 			os.Exit(0)
