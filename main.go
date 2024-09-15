@@ -114,9 +114,6 @@ func GetAll() {
 		log.Fatal(err)
 	}
 	for rows.Next() {
-		var id int
-		var name string
-		var information string
 		err = rows.Scan(&id, &name, &information)
 		if err != nil {
 			log.Fatal(err)
