@@ -158,13 +158,19 @@ func getByName(name string) {
 	rows, err := db.Query(query, name)
 	if err != nil {
 		log.Fatal(err)
-	} else {
-		err = rows.Scan(&name, &information)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		err = rows.Scan(&information)
 		if err != nil {
 			log.Fatal(err)
-		} else {
-			fmt.Println(information)
 		}
+		fmt.Println(information)
+	}
+
+	if err = rows.Err(); err != nil {
+		log.Fatal(err)
 	}
 }
 
@@ -173,12 +179,18 @@ func getById(id int) {
 	rows, err := db.Query(query, id)
 	if err != nil {
 		log.Fatal(err)
-	} else {
-		err = rows.Scan(&id, &information)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		err = rows.Scan(&information)
 		if err != nil {
 			log.Fatal(err)
-		} else {
-			fmt.Println(information)
 		}
+		fmt.Println(information)
+	}
+
+	if err = rows.Err(); err != nil {
+		log.Fatal(err)
 	}
 }
